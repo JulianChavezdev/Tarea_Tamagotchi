@@ -14,7 +14,7 @@ Todos los atributos comienzan con una puntuación base de **4**.
 
 ---
 
-## 🛠 Interfaz de la Clase 
+## 🛠 Interfaz de la Clase (API)
 
 Según los requerimientos, la clase `Tamagotchi` debe exponer **únicamente** tres métodos públicos. Todos retornan un `String` con el estado visual y no aceptan parámetros.
 
@@ -42,4 +42,18 @@ El método de retorno de estado debe evaluar las condiciones en el siguiente ord
 
 Para que este código funcione de forma robusta y no como un prototipo mediocre, considera lo siguiente:
 
-- **Encapsulamiento:** Los
+- **Encapsulamiento:** Los atributos `hunger`, `energy` y `mood` deben ser privados (`#private` en JS o `private` en TS/Java).
+- **Límites (Clamping):** Aunque la kata no lo pida explícitamente, un buen desarrollador evita que el hambre sea negativa o que la energía suba al infinito.
+- **Estado de Sueño:** La acción `sleep()` es una orden directa; el retorno debe ser el estado de dormido independientemente de los otros valores en ese instante.
+
+---
+
+## 🚀 Ejemplo de Uso
+
+```javascript
+const tamagotchi = new Tamagotchi();
+
+tamagotchi.play(); // Retorna ":-|"
+tamagotchi.eat();  // Retorna ":-|"
+// ... tras varias acciones ...
+tamagotchi.play(); // Si Energy < 3 -> Retorna "(-_-)"
